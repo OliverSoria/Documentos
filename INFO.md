@@ -22,8 +22,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends wget && apt-get
 
 #### ACCEDER A LA LINEA DE COMANDOS DE UN CONTENEDOR
 **-it** ejecuta el contenedor de forma interactiva
-** /bin/bash ** especifica la ruta donde tomar los binarios
-docker run -it ubuntu /bin/bash
+
+**/bin/bash** especifica la ruta donde tomar los binarios
+
+**docker run -it ubuntu /bin/bash** ejemplo de ejecucion de un contenedor de forma interactiva
 
 # ACCEDER A LOGS
 docker run -d -P --name my-docker httpd # Se ejecuta un docker -d es Daemon y -P habilia los puertos
