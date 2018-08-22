@@ -3,13 +3,17 @@
 **docker ps** Nos dice todos los contenedores activos que están corriendo  
 **docker ps -a** Muestra todos los contenedores en el sistema (activos o inactivos)  
 **docker rm idDelContenedor** Elimina el contenedor especificado, ya sea por su id o por su nombre  
-**nano Dockerfile** Crea un contenedor  
 
 ### EJEMPLO DE CONTENEDOR SENCILLO
+En una terminal se comienza por crear un documento de texto con el siguiente comando:  
+**nano Dockerfile**  
+Ahora se ingresa el siguiente contenido:  
 **FROM ubuntu:latest** # Imagen base para crear nuestro contenedor  
 **CMD echo "Mi primer contenedor"** # CMD expresa 'comando'  
-Posteriormente en una terminal ejecutar el siguiente comando:
-**docker build . -t nombre-de-la-imagen** Se usa para construir el 'Dockerfile', el punto expresa directorio actual
+Posteriormente en una terminal ejecutar el siguiente comando para construir el 'Dockerfile':  
+**docker build . -t nombre-de-la-imagen** Donde el punto expresa directorio actual  
+Y por último se ejecuta el contenedor como tal:  
+**docker run nombre-de-la-imagen**
 
 ### RESUMEN PARA CREAR UN CONTENEDOR PERSONALIZADO
 1) Crea un Dockerfile con las características deseadas
@@ -32,7 +36,7 @@ Nota: en este caso se usa Ubuntu como base para instalar wget
 **docker logs -f my-docker** Obtiene logs en tiempo real  
 **docker logs --tail 66 my-docker** Regresa las ultimas 66 lineas del log  
 **docker logs -f --tail 8 my-docker** Regresa las ultimas 8 lineas del log y continua poleando  
-**Para saber mas de logs checar splunk**  
+**Para saber mas de logs checar splunk**
 
 ### HEALTHCKECKS
 # Se crea un nuevo contenedor con curl instalado
