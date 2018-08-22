@@ -39,7 +39,7 @@ Tema en desarrollo...
 **docker logs -f my-docker** Obtiene logs en tiempo real  
 **docker logs --tail 66 my-docker** Regresa las ultimas 66 lineas del log  
 **docker logs -f --tail 8 my-docker** Regresa las ultimas 8 lineas del log y continua poleando  
-Para saber mas de logs checar splunk
+Nota: Para saber mas de logs checar splunk
 
 ### HEALTHCKECKS
 Se crea un nuevo contenedor con curl instalado y con HEALTHCHECK se definen los parametros:  
