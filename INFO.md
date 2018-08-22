@@ -21,9 +21,9 @@ Y por último se ejecuta el contenedor como tal:
 3) Con run se crea un contenedor, es decir una instancia del contenedor
 
 ### PASOS PARA INSTALAR SOFTWARE EN UN CONTENEDOR
-Nota: en este caso se usa Ubuntu como base para instalar wget  
 **FROM ubuntu:latest**  
 **RUN apt-get update && apt-get install -y --no-install-recommends wget && apt-get clean**
+Nota: en este caso se usa Ubuntu como base para instalar wget  
 
 ### ACCEDER A LA LINEA DE COMANDOS DE UN CONTENEDOR
 **-it** ejecuta el contenedor de forma interactiva  
