@@ -30,23 +30,27 @@ Nota: en este caso se usa Ubuntu como base para instalar wget
 **/bin/bash** especifica la ruta donde tomar los binarios  
 **docker run -it ubuntu /bin/bash** ejemplo de ejecucion de un contenedor de forma interactiva
 
+### MONTAR UN VOLUMEN EN UN CONTENEDOR
+Tema en desarrollo...  
+
 ### ACCEDER A LOGS
 **docker run -d -P --name my-docker httpd** Se ejecuta un docker, -d es Daemon y -P habilia los puertos  
 **docker logs my-docker** Accesa al archivo de logs  
 **docker logs -f my-docker** Obtiene logs en tiempo real  
 **docker logs --tail 66 my-docker** Regresa las ultimas 66 lineas del log  
 **docker logs -f --tail 8 my-docker** Regresa las ultimas 8 lineas del log y continua poleando  
-**Para saber mas de logs checar splunk**
+Para saber mas de logs checar splunk
 
 ### HEALTHCKECKS
-# Se crea un nuevo contenedor con curl instalado
-# Con HEALTHCHECK se definen los parametros
-FROM tomcat:latest
-RUN apt-get update && apt-get install -y --no-install-recommends curl && apt-get clean
-HEALTHCHECK --interval=20s --retries=5 --timeout=30s --start-period=5s CMD curl -I -f "http://localhost:8080" || exit 1
-
-docker build . -t tomcat-hc # Se construye la imagen
-docker run -d -P tomcat-hc # Se ejecua el contenedor
-docker ps # En STATUS ahora mostrara la salud del contenedor
+Se crea un nuevo contenedor con curl instalado y con HEALTHCHECK se definen los parametros:  
+**FROM tomcat:latest**  
+**RUN apt-get update && apt-get install -y --no-install-recommends curl && apt-get clean**  
+**HEALTHCHECK --interval=20s --retries=5 --timeout=30s --start-period=5s CMD curl -I -f "http://localhost:8080" || exit 1**  
+Posteriormente se construye y se corre el contenedor de la siguiente manera:  
+**docker build . -t tomcat-hc**  
+**docker run -d -P tomcat-hc**  
+Ahora en STATUS se mostrará la salud del contenedor:  
+**docker ps**  
 
 ### CONECTANDO CONTENEDORES
+Tema en desarrollo..  
