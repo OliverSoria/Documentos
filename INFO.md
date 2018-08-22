@@ -21,7 +21,7 @@ FROM ubuntu:latest
 RUN apt-get update && apt-get install -y --no-install-recommends wget && apt-get clean
 
 #### ACCEDER A LA LINEA DE COMANDOS DE UN CONTENEDOR
-** -it ** ejecuta el contenedor de forma interactiva
+**-it** ejecuta el contenedor de forma interactiva
 ** /bin/bash ** especifica la ruta donde tomar los binarios
 docker run -it ubuntu /bin/bash
 
