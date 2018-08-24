@@ -31,7 +31,9 @@ Nota: en este caso se usa Ubuntu como base para instalar wget
 **docker run -it ubuntu /bin/bash** ejemplo de ejecucion de un contenedor de forma interactiva
 
 ### MONTAR UN VOLUMEN EN UN CONTENEDOR
-Tema en desarrollo...  
+Ejecutamos un contenedor de forma interactiva:  
+**docker run -it -v C:\Users\Oliver\Documents\personales\git\01\script.sh:/home/script.sh ubuntu /bin/bash**  
+**-v** significa que montaremos un volumen, de lado izquierdo de los puntos se define el origen del elemento a montar, de lado derecho se define el destino del elemento a montar  
 
 ### ACCEDER A LOGS
 **docker run -d -P --name my-docker httpd** Se ejecuta un docker, -d es Daemon y -P habilia los puertos  
