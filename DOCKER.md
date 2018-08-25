@@ -22,7 +22,7 @@ Y por último se ejecuta el contenedor como tal:
 
 ### PASOS PARA INSTALAR SOFTWARE EN UN CONTENEDOR
 **FROM ubuntu:latest**  
-**RUN apt-get update && apt-get install -y --no-install-recommends wget && apt-get clean**
+**RUN apt-get update && apt-get install -y --no-install-recommends wget && apt-get clean**  
 Nota: en este caso se usa Ubuntu como base para instalar wget  
 
 ### ACCEDER A LA LINEA DE COMANDOS DE UN CONTENEDOR
