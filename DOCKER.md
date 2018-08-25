@@ -33,7 +33,7 @@ Nota: en este caso se usa Ubuntu como base para instalar wget
 ### MONTAR UN VOLUMEN EN UN CONTENEDOR
 Ejecutamos un contenedor de forma interactiva con cualquiera de las siguientes opciones (de Windows a Linux):  
 **docker run -it -v C:\Users\Oliver\Documents\personales\git\01\script.sh:/home/script.sh ubuntu /bin/bash**  
-**docker run -it -v //c/Users/myScript.sh:/home/myScript.sh ubuntu /bin/bash**
+**docker run -it -v //c/Users/myScript.sh:/home/myScript.sh ubuntu /bin/bash**  
 **-v** significa que montaremos un volumen, de lado izquierdo de los puntos se define el origen del elemento a montar, de lado derecho se define el destino del elemento a montar  
 
 ### ACCEDER A LOGS
