@@ -39,12 +39,12 @@ Y para realizar la misma operación de Linux a Linux:
 **-v** significa que montaremos un volumen, de lado izquierdo de los puntos se define el origen del elemento a montar, de lado derecho se define el destino del elemento a montar  
 
 ### ACCEDER A LOGS
-**docker run -d -P --name my-docker httpd** Se ejecuta un docker, -d es Daemon y -P habilia los puertos  
+**docker run -d -P --name my-docker httpd** Se ejecuta un docker, -d es Daemon y -P habilia (expone) los puertos  
 **docker logs my-docker** Accesa al archivo de logs  
 **docker logs -f my-docker** Obtiene logs en tiempo real  
 **docker logs --tail 66 my-docker** Regresa las ultimas 66 lineas del log  
 **docker logs -f --tail 8 my-docker** Regresa las ultimas 8 lineas del log y continua poleando  
-Nota: Para saber mas de logs checar splunk
+Nota: Para saber mas de logs checar splunk  
 
 ### HEALTHCKECKS
 Se crea un nuevo contenedor con curl instalado y con HEALTHCHECK se definen los parametros:  
@@ -64,13 +64,9 @@ Ahora en STATUS se mostrará la salud del contenedor:
 **docker stop $(docker ps -q)** detiene todos los contenedores, todos  
 **docker rm $(docker -a -q)** remueve todos los contenedores, incluyendo los que ya están detenidos  
 **docker ps --filter status=running** Muestra los dockers filtrandolos por estatus  
-**docker ps --filter status=running -q** El comando anterior se puede combinar con otras opciones, hay muchas más opciones de filtros, buscarlas en internet**docker rm $()  
+**docker ps --filter status=running -q** El comando anterior se puede combinar con otras opciones, hay muchas más opciones de filtros, buscarlas en internet  
+**docker rm $()  
 **docker inspect idDelDocker** muestra toda la información del docker  en formato json  
 
-
-
- 
-
-
-### CONECTANDO CONTENEDORES
+### ENLAZANDO CONTENEDORES
 Tema en desarrollo...  
