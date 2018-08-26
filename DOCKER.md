@@ -34,6 +34,8 @@ Nota: en este caso se usa Ubuntu como base para instalar wget
 Ejecutamos un contenedor de forma interactiva con cualquiera de las siguientes opciones (de Windows a Linux):  
 **docker run -it -v C:\Users\Oliver\Documents\personales\git\01\script.sh:/home/script.sh ubuntu /bin/bash**  
 **docker run -it -v //c/Users/myScript.sh:/home/myScript.sh ubuntu /bin/bash**  
+Y para realizar la misma operación de Linux a Linux:
+**docker run -it -v "$(pwd)/script.sh:/home/script.sh" ubuntu /bin/bash**  
 **-v** significa que montaremos un volumen, de lado izquierdo de los puntos se define el origen del elemento a montar, de lado derecho se define el destino del elemento a montar  
 
 ### ACCEDER A LOGS
@@ -62,7 +64,9 @@ Ahora en STATUS se mostrará la salud del contenedor:
 **docker stop $(docker ps -q)** detiene todos los contenedores, todos  
 **docker rm $(docker -a -q)** remueve todos los contenedores, incluyendo los que ya están detenidos  
 **docker ps --filter status=running** Muestra los dockers filtrandolos por estatus  
-**docker ps --filter status=running -q** El comando anterior se puede combinar con otras opciones  
+**docker ps --filter status=running -q** El comando anterior se puede combinar con otras opciones, hay muchas más opciones de filtros, buscarlas en internet**docker rm $()  
+**docker inspect idDelDocker** muestra toda la información del docker  en formato json  
+
 
 
  
