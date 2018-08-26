@@ -69,4 +69,8 @@ Ahora en STATUS se mostrará la salud del contenedor:
 **docker inspect idDelDocker** muestra toda la información del docker  en formato json  
 
 ### ENLAZANDO CONTENEDORES
-Tema en desarrollo...  
+Se crea un conenedor MySQL:  
+**docker run --name mysql-container -e MYSQL_ROOT_PASSWORD=pass -d mysql:5.7.23** -e se usa para definir variables de entorno que serán usadas por el contenedor  
+Ahora se crea un contenedor de adminer (antes phpmyadmin) para conectarlo al contenedor MySQL:  
+**docker run --link mysql-container:db -p 8080:8080 adminer** de lado izquierdo de los puntos va el nombre del contenedor creado en el paso anterior, de lado derecho va el alias  
+Después de eso, podemos entrar a un navegador para empezar a usar adminer  
