@@ -57,7 +57,7 @@ Posteriormente se construye y se corre el contenedor de la siguiente manera:
 Ahora en STATUS se mostrará la salud del contenedor:  
 **docker ps**  
 
-## COMANDOS MÁS AVANZADOS EN DOCKER  
+### COMANDOS MÁS AVANZADOS EN DOCKER  
 **docker ps -q** imprime todos los ids de los contenedores que están corriendo  
 **docker ps -a - q** imprime todos los ids de los contenedores, tanto de los que están corriendo, como de los que no  
 **docker stop idContenedror** detiene el container que se ha especificado, ya sea por nombre o por id  
