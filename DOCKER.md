@@ -74,3 +74,32 @@ Se crea un conenedor MySQL:
 Ahora se crea un contenedor de adminer (antes phpmyadmin) para conectarlo al contenedor MySQL:  
 **docker run --link mysql-container:db -p 8080:8080 adminer** de lado izquierdo de los puntos va el nombre del contenedor creado en el paso anterior, de lado derecho va el alias.  
 Después de eso, podemos entrar a un navegador para empezar a usar adminer  
+
+### DOCKER-COMPOSE
+
+
+### VALIDAR INSTALACIÓN DE DOCKER-COMPOSE
+**docker-compose -v** imprime en pantalla la versión de docker-compose  
+
+
+### EJEMPLO DE UN ARCHIVO _docker-compose.yml_
+
+```
+version: '3.1'
+
+services:
+  tomcat1:
+    # dockercomp_tomcat1
+    image: tomcat:latest
+    ports:
+      - 1002:80
+      - 1003:8080
+      - 1013:8080
+  tomcat2:
+    image: tomcat:latest
+    ports:
+      - 1004:80
+      - 1005:8080
+    environment:
+      TEST_ENV_VAR: test1234
+```
