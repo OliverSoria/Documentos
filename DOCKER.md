@@ -76,7 +76,7 @@ Ahora se crea un contenedor de adminer (antes phpmyadmin) para conectarlo al con
 Después de eso, podemos entrar a un navegador para empezar a usar adminer  
 
 ### DOCKER-COMPOSE
-
+tema en desarrollo...  
 
 ### VALIDAR INSTALACIÓN DE DOCKER-COMPOSE
 **docker-compose -v** imprime en pantalla la versión de docker-compose  
@@ -88,14 +88,13 @@ Después de eso, podemos entrar a un navegador para empezar a usar adminer
 version: '3.1'
 
 services:
-  tomcat1:
-    # dockercomp_tomcat1
+  dockercomp_tomcat1:
     image: tomcat:latest
     ports:
       - 1002:80
       - 1003:8080
       - 1013:8080
-  tomcat2:
+  dockercomp_tomcat2:
     image: tomcat:latest
     ports:
       - 1004:80
@@ -103,3 +102,43 @@ services:
     environment:
       TEST_ENV_VAR: test1234
 ```
+*  _version_ especifica la versión, se recomienda usar la más nueva  
+* _dockercomp_tomcat1_ es el alias que le queramos poner al contenedor, al hacer **docker ps** aparecerá con un nombre parecido al que asignamos aquí  
+*  _services_ especifica los contenedores como tal  
+*  _image_ especifica el nombre de la imagen que se usará como base  
+*  _ports_ especifica los puertos que se habilitarán  
+*  _environment_ especifica las variables de entorno que se desean definir (ej. contraseñas)  
+
+### EJECUTANDO UN ARCHIVO _docker_compose.yml_
+**docker-compose up** se ejecuta dentro de la carpeta contenedora para levantar todos los contenedores específicados en el archivo  
+**CTRL + C** se utiliza para detener los conenedores cuando fueron ejecutados de acuerdo al paso anterior    
+**docker-compose up -d** se ejecura para levantar los contenedores en modo _daemon_, cuando un contenedor se levanta de está forma es posible acceder a él por medio del siguiente comando:  
+**docker exec -it 01_dockercomp_tomcat1_1 /bin/bash** ejecutamos un contenedor que ya estaba corriendo, una vez adentro hacemos un ping al segundo contenedor:  
+**ping 01_dockercomp_tomcat2_1** Si todo se hizo bien ambos contenedores definidos en el archivo _yml_ deben tener conectividad, el ping tambié lo podemos hacer usando el alias:  
+**ping dockercomp_tomcat2** Si todo salió bien el resultado será igual al paso anterior  
+**echo $TEST_ENV_VAR** imprime en pantalla la variable de entorno definida en el archivo _yml_  
+**docker-compose stop** detiene los contenedores que fueron ejecutados con la opcion _-d_ de docker-compose  
+
+### ENLAZANDO _MySQL_ CON _adminer_ mediante _docker-compose_
+
+El archivo _yml_ para realiar el enlace sería muy similar al del tema anterior:  
+```
+version: '3.1'
+
+services:
+  mysql-db:
+    image: mysql:5.7.23
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: pass
+  adminer-container:
+    image: adminer:latest
+    restart: always
+    ports:
+      - 8080:8080
+```
+
+La única diferencia sustancial es que se usa el parámetro _**restart**_ que sirve para que el contenedor se reinicie después de que el servidor donde se aloja sea reiniciado
+
+
+ 
