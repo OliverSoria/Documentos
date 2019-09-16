@@ -2,16 +2,23 @@
 
 ### Resumen y comandos más importantes de Kubernetes
 
-Un **pod** es un envoltorio de un _contenedor_<br/>
+Un **pod** es un envoltorio de un _contenedor<br/>
 Los **pods** se definen en un archivo yml<br/>
+Los pods **no** se pueden ver desde afuera del cluster, o sea que no es posible acceder a un pod por su ip/puerto<br/>
 **minikube ip** nos devuelve la ip del minukube para poder conectarnos a sus servicios<br/>
-**kubectl get pods** muestra todo los _pods_ que están corriendo<br/>
-**kubectl get services** muestra todo los _servicios_ que están corriendo<br/>
+**kubectl get pods/kubectl get po** muestra todo los _pods_ que están corriendo<br/>
+**kubectl get services/kubectl get service** muestra todo los _servicios_ que están corriendo<br/>
 **kubectl get all** muestra todo lo que tenemos definido en el cluster<br/>
 **kubectl apply -f name-file.yml** crea un pod en base al archivo leído<br/>
 **kubectl describe pod name-of-pod** describe el pod con el nombre que especifiquemos<br/>
+**kubectl describe service name-of-service** describe el servicio con el nombre que especifiquemos<br/>
+
+### Comandos más avanzados
+
 **kubectl -it exec webapp sh** comando utiliado para conectarnos con un pod de forma interactiva y poder ejecutar comandos directamente a ese pod<br/>
-Los pods **no** se pueden ver desde afuera del cluster, o sea que no es posible acceder a un pod por su ip/puerto<br/>
+**kubectl get po --show-labels** muestra los pods y además agerga las etiquetas<br/>
+**kubectl get po --show-labels -l release=0** muestra los pods, filtrando por la etiqueta especificada y agregando la etiqueta, en el ejemplo se realiza un filtrado por la etiqueta _release=0_<br/>
+
 
 ### Creación de un pod
 
