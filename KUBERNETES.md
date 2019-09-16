@@ -12,6 +12,7 @@ Los pods **no** se pueden ver desde afuera del cluster, o sea que no es posible 
 **kubectl apply -f name-file.yml** crea un pod en base al archivo leído<br/>
 **kubectl describe pod name-of-pod** describe el pod con el nombre que especifiquemos<br/>
 **kubectl describe service name-of-service** describe el servicio con el nombre que especifiquemos<br/>
+**kubectl delete pod mame-of-pod** borra el pod específicado<br/>
 
 ### Comandos más avanzados
 
