@@ -5,6 +5,8 @@
 Un **pod** es un envoltorio de un _contenedor_<br/>
 Los **pods** se definen en un archivo yml<br/>
 **minikube ip** nos devuelve la ip del minukube para poder conectarnos a sus servicios<br/>
+**kubectl get pods** muestra todo los _pods_ que están corriendo<br/>
+**kubectl get services** muestra todo los _servicios_ que están corriendo<br/>
 **kubectl get all** muestra todo lo que tenemos definido en el cluster<br/>
 **kubectl apply -f name-file.yml** crea un pod en base al archivo leído<br/>
 **kubectl describe pod name-of-pod** describe el pod con el nombre que especifiquemos<br/>
@@ -57,6 +59,63 @@ Posteriormente desplegamos el servicio con el mismo comando que se despliega un 
 Nota: es importante señalar que el _label_ del servicio debe coincider con el _app_ del pod para que tengan comunicación.
 
 Ahora, para acceder a la aplicación y validar que todo esté bien, necesitamos la ip del minikube dado que todo lo estamos corriendo en un minikube, entonces ejecutamos: **minikube ip**, nos devielve la ip eg. 192.168.99.100 a la cual solo agregamos el puerto que definimos en el servicio y listo: http://192.168.99.100:30080/<br/>
+
+### Un servicio, múltiples pods
+
+Se puede tener un solo servicio y múltiples pods, de tal forma que el servicio se conecta a un solo pod, retomando el ejemplo anterior de _un pod-un servicio_, ahora crearemos un segundo pod, agergando ademas la propiedad _release_ dentro de _labels_, obviamente el _name_ del segundo pod debe ser disitnto del primer pod. entonces tenemos las siguientes definiciones de los pods:<br/>
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: webapp
+  labels:
+    app: webapp
+    release: "0"
+spec:
+  containers:
+    - name: webapp
+      image: richardchesterwood/k8s-fleetman-webapp-angular:release0
+```
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: webapp-release-0-5
+  labels:
+    app: webapp
+    release: "0-5"
+spec:
+  containers:
+    - name: webapp
+      image: richardchesterwood/k8s-fleetman-webapp-angular:release0-5
+```
+Nótese que el _name_ es distinto, así como el _release_ y por supuesto también la propiedad _image_.<br/>
+
+Respecto al servicio tenemos que agregar la propiedad _release_ dentro de _selector_, obteniendo lo siguiente:
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  # Unique key of the Service instance
+  name: fleetman-webapp
+
+spec:
+  selector:
+    app: webapp
+    release: "0-5"
+
+  ports:
+    - port: 80
+      name: http
+      nodePort: 30080
+
+  type: NodePort
+```
+
+Ahora solo falta desplegar el respectivo pod y desde luego el servicio.
+
 
 
 
