@@ -2,6 +2,7 @@
 
 ### Resumen y comandos más importantes de Kubernetes
 
+Un **pod** es un envoltorio de un _contenedor_<br/>
 Los **pods** se definen en un archivo yml<br/>
 **minikube ip** nos devuelve la ip del minukube para poder conectarnos a sus servicios<br/>
 **kubectl get all** muestra todo lo que tenemos definido en el cluster<br/>
@@ -20,7 +21,7 @@ kind: Pod
 metadata:
   name: webapp
   labels:
-    label: webapp
+    app: webapp
 spec:
   containers:
     - name: webapp
@@ -41,7 +42,7 @@ metadata:
 
 spec:
   selector:
-    label: webapp
+    app: webapp
 
   ports:
     - port: 80
