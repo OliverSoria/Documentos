@@ -3,6 +3,7 @@
 ### Resumen y comandos más importantes de Kubernetes
 
 Los **pods** se definen en un archivo yml<br/>
+**minikube ip** nos devuelve la ip del minukube para poder conectarnos a sus servicios<br/>
 **kubectl get all** muestra todo lo que tenemos definido en el cluster<br/>
 **kubectl apply -f name-file.yml** crea un pod en base al archivo leído<br/>
 **kubectl describe pod name-of-pod** describe el pod con el nombre que especifiquemos<br/>
