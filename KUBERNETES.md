@@ -49,5 +49,9 @@ spec:
   type: NodePort
 ```
 
-Posteriormente desplegamos el servicio con el mismo comando que se despliega un pod **kubectl apply -f mi-servicio.yml**
+Posteriormente desplegamos el servicio con el mismo comando que se despliega un pod **kubectl apply -f mi-servicio.yml**<br/>
+Ahora, para acceder a la aplicación y validar que todo esté bien, necesitamos la ip del minikube dado que todo lo estamos corriendo en un minikube, entonces ejecutamos: **minikube ip**, nos devielve la ip eg. 192.168.99.100 a la cual solo agregamos el puerto que definimos en el servicio y listo: http://192.168.99.100:30080/<br/>
+
+
+
 
