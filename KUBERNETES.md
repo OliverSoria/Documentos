@@ -122,7 +122,45 @@ spec:
   type: NodePort
 ```
 
-Ahora solo falta desplegar el respectivo pod y desde luego el servicio.
+Ahora solo falta desplegar el respectivo pod y desde luego el servicio.<br/>
+
+###ReplicaSets
+
+<ul>
+<li>Lo primero que vamos a cambiar será el _kind_, que antes era _Pod_, ahora será _ReplicaSet_, ya que no puede ser ambos. </li>
+<li>El _name_ pasa a ser algo secundario ya que los nombres se generan en automático, así que lo borramos.</li>
+<li>En este ejemplo en particular el _release_ tampoco es necesario.</li>
+<li>Agregamos la sección _spec_, donde se especifica el número de réplicas y el _template_.</li>
+<li>El _template_ tiene la información del pod, que hemos venido usando con anterioridad, es decir _metadata_ y _spec_.</li>
+<li>Es muy importante agregar un _name_ para nuestro _ReplicaSet_, esto lo hacemos agregando la etiqueta _metadata_ y anidamos _name_.</li>
+<li>También en _apiVersion_, aparte de la versión agregamos "_apps/_".</li>
+<li>Dentro de _spec_ tenemos que agregar el _selector_, el cual a su vez anida _matchLabels_ y éste a su vez agrega la etiqueta _app_, necesaria para hacer "match" con el _label_ dentro del _template_.</li>
+</ul>
+
+Con todos estos cambios obtenemos el siguiente archivo:<br/>
+
+```yaml
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: webapp
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: webapp
+    spec:
+      containers:
+        - name: webapp
+          image: richardchesterwood/k8s-fleetman-webapp-angular:release0-5
+  selector:
+    matchLabels:
+      app: webapp
+```
+
+Ahora solo falta aplicar los cambios con el comando kubectl apply -f **nombre-del-archivo.yml**<br/>
+
 
 
 
