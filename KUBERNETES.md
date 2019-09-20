@@ -13,6 +13,8 @@ Los pods **no** se pueden ver desde afuera del cluster, o sea que no es posible 
 **kubectl describe pod name-of-pod** describe el pod con el nombre que especifiquemos<br/>
 **kubectl describe service name-of-service** describe el servicio con el nombre que especifiquemos<br/>
 **kubectl delete pod mame-of-pod** borra el pod específicado<br/>
+**kubectl delete pods --all** elimina todos los pods<br/>
+**kubectl describe rs name-of-replica-set** Describe el _ReplicaSet_ que indiquemos <br/>
 
 ### Comandos más avanzados
 
@@ -159,7 +161,7 @@ spec:
       app: webapp
 ```
 
-Ahora solo falta aplicar los cambios con el comando kubectl apply -f **nombre-del-archivo.yml**<br/>
+Ahora solo falta aplicar los cambios con el comando kubectl apply -f **nombre-del-archivo.yml** y en caso de que queramos ver sus detalles, podemos recurrir al siguiente comando: kubectl describe rs **name-of-replica-set**<br/>
 
 
 
